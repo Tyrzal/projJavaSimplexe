@@ -15,20 +15,31 @@ public class Input {
 		param = new ArrayList<>();
 	}
 	
-	//Méthode appelée deux fois pour avoir le nombre de paramètre et le nombre de constante
-	public List<Double> lireEquation() {
+	//MÃ©thode appelÃ©e pour la fonction Z et pour les contraintes
+	public List<Double> lireFonction() {
 		param.clear();
-		scan.nextLine();
+		String str = scan.nextLine();
+		int n=0;
+		for(int i=0;i<str.length();i++){
+			if(str.charAt(i)==' '){
+				param.add(Double.parseDouble(str.substring(i-n, i)));
+				n=0;
+			}
+			else if (i==str.length()-1){
+				param.add(Double.parseDouble(str.substring(i-n, str.length())));
+			}
+			else{
+				n++;
+			}
+		}	
 		return param;
 	}
-		
-		
 	
-	
-	//Méthode appelée xfois permettant d'avoir la fonction Z et les x contraintes
-	public String getFonction() {
-		String z = scan.nextLine();
-		return z;
+	//DÃ©finis le nombre de paramÃ¨tres des contraintes et le nombre de contraintes
+	public int definirProbleme() {
+		int retour = scan.nextInt();
+		scan.nextLine();
+		return retour;
 	}
 	
 	
